@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Diabetes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel='stylesheet' href="{% static 'assets/css/main.css' %}">
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/main.css' %}" /></noscript>
+		<style media="screen">
+	  .popup{
+		  background-color: #ffffff;
+		  width: 420px;
+		  padding: 30px 40px;
+		  position: absolute;
+		  transform: translate(-50%,-50%);
+		  left: 50%;
+		  top: 50%;
+		  border-radius: 8px;
+		  font-family: "Poppins",sans-serif;
+		  display: none; 
+		  text-align: center;
+	  }
+	  .popup button{
+		  display: block;
+		  margin:  0 0 20px auto;
+		  background-color: transparent;
+		  font-size: 15px;
+		  color: #ffffff;
+		  background: #03549a;
+		  border-radius: 100%;
+		  width: 40px;
+		  height: 40px;
+		  border: none;
+		  outline: none;
+		  cursor: pointer;
+	  }
+	  .popup h2{
+		margin-top: -20px;
+	  }
+	  .popup p{
+		  font-size: 14px;
+		  text-align: center;
+		  margin: 20px 0;
+		  line-height: 25px;
+	  }
+		  </style>
+<script>
+	// When the user clicks on <div>, open the popup
+	function myFunction() {
+	  var popup = document.getElementById("myPopup");
+	  popup.classList.toggle("show");
+	}
+	</script>
+	</head>
+	<body class="is-preload">
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Early Classification Of Diabetes</h1>
+							<p>Enter you information to check if you might have Diabetes.</p>
+						</div>
+					</section>
+
+				
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="fields">
+											{% csrf_token %}
+				<ul>
+				<label for="">Age</label>
+				<input type="text" name="age">
+<br>
+				<label for=""><a href="https://en.wikipedia.org/wiki/Polyuria">Polyuria</a></label>
+				<input type="text" name="polyuria"><br>
+				<label for=""><a href="https://en.wikipedia.org/wiki/Polydipsia">Polydipsia</a></label>
+				<input type="text" name="polydipsia">
+				<br>
+				<label for="">Sudden Weight Loss</label>
+				<input type="text" name="sudden_weight_loss">
+				<br>
+				<label for="">Weakness</label>
+				<input type="text" name="weakness">
+				<br>
+				<label for=""><a href="https://en.wikipedia.org/wiki/Polyphagia">Polyphagia</a></label>
+				<input type="text" name="polyphagia">
+				<br>
+				<label for="">Genital Thrush</label>
+				<input type="text" name="genital_thrush">
+				<br>
+				<label for="">Visual Blurring</label>
+				<input type="text" name="visual_blurring">
+				<br>
+				<label for="">itching</label>
+				<input type="text" name="itching">
+				<br>
+				<label for="">irritability</label>
+				<input type="text" name="irritability">
+				<br>
+				<label for="">delayed healing</label>
+				<input type="text" name="delayed_healing">
+				<br>
+				<label for=""><a href="https://www.healthline.com/health/paresis#bottom-line">Partial Paresis</a></label>
+				<input type="text" name="partial_paresis">
+				<br>
+				<label for="">Muscle Stiffness</label>
+				<input type="text" name="muscle_stiffness">
+				<br>
+				<label for=""><a href="https://www.niams.nih.gov/health-topics/alopecia-areata#:~:text=Alopecia%20areata%20is%20a%20disease,affects%20the%20head%20and%20face.">Alopecia</a></label>
+				<input type="text" name="alopecia">
+				<br>
+				<label for="">obesity</label>
+				<input type="text" name="obesity">
+				<br>
+				<input type="Submit" value="Submit" />
+				</ul>
+									</form>
+								</section>
+							
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+			</div>
+			
+
+			{% if user  %}
+			<div class="popup">
+				<button id="close">&times;</button>
+				<h2 style="color:black;">{{ans}}</h2>
+				{% if z  %}
+					<p style="color:black;">Please try to get tested as soon as possible</p>
+				{% endif %}
+				
+			</div>
+			<!--Script-->
+			<script type="text/javascript">
+		window.addEventListener("load", function(){
+			setTimeout(
+				function open(event){
+					document.querySelector(".popup").style.display = "block";
+				},
+				2000 
+			)
+		});
+		
+		
+		document.querySelector("#close").addEventListener("click", function(){
+			document.querySelector(".popup").style.display = "none";
+		});
+			</script>             
+            {% endif %}
+			
+		<!-- Footer -->
+
+		<!-- Scripts -->
+		<script src="{% static '/js/jquery.min.js' %}"></script>
+		<script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static '/js/browser.min.js' %}"></script>
+		<script src="{% static '/js/breakpoints.min.js' %}"></script>
+		<script src="{% static '/js/util.js' %}"></script>
+		<script src="{% static '/js/main.js' %}"></script>
+
+	</body>
+</html>
